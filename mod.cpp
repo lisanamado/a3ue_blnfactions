@@ -1,4 +1,4 @@
-name = "BLN 0.6b";
+name = "BLN 0.6c";
 author = "Catertico";
 tooltip = "";
 actionName = "";
