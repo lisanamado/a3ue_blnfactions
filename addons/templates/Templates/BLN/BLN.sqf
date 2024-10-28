@@ -1,7 +1,44 @@
 //This is a basic CUP Rebel faction I'm trying to make for our next campaign in AU
 //It's meant to be a latin-american civilian-in-arms faction, including female soldiers and spanish radio voiceovers, and a very limited initial weapons stash.
 //I made it on the base of LRI rebel faction. most of the scripting is a copy of it as it is found in AU's core pbo.
-//I can find it in the faction selector, but the game will keep trying to start for ever, getting in RPT file the errors I commented in discord.
+//I can find it in the faction selector, but the game will keep trying to start for ever, getting in RPT file these errors:
+
+
+//21:56:59 Error in expression <clesCivPlane");
+//["undercoverVehicles",  _undercoverVehicles] call _declareServer>
+//21:56:59   Error position: <_undercoverVehicles] call _declareServer>
+//21:56:59   Error Variable no definida en la expresión: _undercovervehicles
+//21:56:59 File x\A3A\addons\core\functions\init\fn_initVarServer.sqf..., line 470
+//21:56:59  ? Context: 	[] L1 (x\A3A\addons\maps\Antistasi_Malden.Malden\initServer.sqf)
+	//[] L92 (x\A3A\addons\core\functions\init\fn_initServer.sqf)
+	//[] L478 (x\A3A\addons\core\functions\init\fn_initVarServer.sqf)
+	//[] L478 (x\A3A\addons\core\functions\init\fn_initVarServer.sqf)
+	//[] L478 (x\A3A\addons\core\functions\init\fn_initVarServer.sqf)
+
+//    21:57:20 Error in expression <ction_reb get "initialRebelEquipment");
+//_initialEquipment append lootBasicItem;
+//>
+//21:57:20   Error position: <_initialEquipment append lootBasicItem;
+//>
+//21:57:20   Error Variable no definida en la expresión: _initialequipment
+//21:57:20 File x\A3A\addons\core\functions\Ammunition\fn_loot.sqf..., line 82
+//21:57:20  ? Context: 	[] L1 (x\A3A\addons\maps\Antistasi_Malden.Malden\initServer.sqf)
+	//[] L92 (x\A3A\addons\core\functions\init\fn_initServer.sqf)
+	//[] L489 (x\A3A\addons\core\functions\init\fn_initVarServer.sqf)
+	//[] L90 (x\A3A\addons\core\functions\Ammunition\fn_loot.sqf)
+	//[] L41 (x\A3A\addons\ultimate\functions\Ammunition\fn_removeForbiddenItems.sqf)
+
+//21:57:20 ["CUP_B_CH53E_GER","CUP_B_UH1D_GER_KSK","CUP_B_AW159_Unarmed_GER","CUP_MH60S_Unarmed_USN","CUP_MH60S_Unarmed_FFV_USN","CUP_B_MH60S_USMC","CUP_B_UH60S_USN","CUP_B_CH53E_USMC","CUP_B_MH60L_DAP_2x_USN","CUP_B_UH1D_GER_KSK_Des","CUP_B_MH6M_USA","CUP_B_MH6J_USA","CUP_B_UH1Y_UNA_USMC","CUP_B_AH1Z_Dynamic_USMC","CUP_B_UH1D_armed_GER_KSK_Des","CUP_B_UH1D_gunship_GER_KSK_Des","CUP_B_AW159_GER","CUP_B_MH60L_DAP_4x_USN","CUP_B_UH1Y_Gunship_Dynamic_USMC"]
+//21:57:20 Error in expression <;
+//{ _groundVehicleThreat set [_x, 80] } forEach (A3A_faction_Reb get  "vehiclesA>
+//21:57:20   Error position: <forEach (A3A_faction_Reb get  "vehiclesA>
+//21:57:20   Error foreach: Tipo Número,No es un número, esperado Vector,HashMap
+//21:57:20 File x\A3A\addons\core\functions\init\fn_initVarServer.sqf..., line 552
+//21:57:20  ? Context: 	[] L1 (x\A3A\addons\maps\Antistasi_Malden.Malden\initServer.sqf)
+	//[] L92 (x\A3A\addons\core\functions\init\fn_initServer.sqf)
+	//[] L552 (x\A3A\addons\core\functions\init\fn_initVarServer.sqf)
+
+
 
 
 #include "..\..\script_component.hpp"
@@ -65,7 +102,6 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 //       Antistasi Plus Stuff       //
 //////////////////////////////////////
 
-//puede ser que acá falte algo tipo un include
 
 ["lootCrate", ""] call _fnc_saveToTemplate;
 ["rallyPoint", ""] call _fnc_saveToTemplate;
@@ -234,15 +270,3 @@ private _unitTypes = [
 
 [_prefix, _unitTypes, _loadoutData] call _fnc_generateAndSaveUnitsToTemplate;
 
-//agregado a ver si arregla el problema:
-
-["attributesVehicles", [
-    ["CUP_O_Hilux_unarmed_TK_CIV", ["rebCost", 600]],
-    ["CUP_I_Hilux_M2_IND_G_F", ["rebCost", 1200]],
-    
-   
-
-    ["C_Quadbike_01_F", ["rebCost", 50]],
-    ["CUP_C_Golf4_black_Civ", ["rebCost", 100]],
-    ["CUP_C_412", ["rebCost", 2000]]
-]] call _fnc_saveToTemplate;class Templates 
