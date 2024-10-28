@@ -7,7 +7,7 @@
 //21:56:59 Error in expression <clesCivPlane");
 //["undercoverVehicles",  _undercoverVehicles] call _declareServer>
 //21:56:59   Error position: <_undercoverVehicles] call _declareServer>
-//21:56:59   Error Variable no definida en la expresión: _undercovervehicles
+//21:56:59   Error Variable no definida en la expresiÃ³n: _undercovervehicles
 //21:56:59 File x\A3A\addons\core\functions\init\fn_initVarServer.sqf..., line 470
 //21:56:59  ? Context: 	[] L1 (x\A3A\addons\maps\Antistasi_Malden.Malden\initServer.sqf)
 	//[] L92 (x\A3A\addons\core\functions\init\fn_initServer.sqf)
@@ -20,7 +20,7 @@
 //>
 //21:57:20   Error position: <_initialEquipment append lootBasicItem;
 //>
-//21:57:20   Error Variable no definida en la expresión: _initialequipment
+//21:57:20   Error Variable no definida en la expresiÃ³n: _initialequipment
 //21:57:20 File x\A3A\addons\core\functions\Ammunition\fn_loot.sqf..., line 82
 //21:57:20  ? Context: 	[] L1 (x\A3A\addons\maps\Antistasi_Malden.Malden\initServer.sqf)
 	//[] L92 (x\A3A\addons\core\functions\init\fn_initServer.sqf)
@@ -32,7 +32,7 @@
 //21:57:20 Error in expression <;
 //{ _groundVehicleThreat set [_x, 80] } forEach (A3A_faction_Reb get  "vehiclesA>
 //21:57:20   Error position: <forEach (A3A_faction_Reb get  "vehiclesA>
-//21:57:20   Error foreach: Tipo Número,No es un número, esperado Vector,HashMap
+//21:57:20   Error foreach: Tipo NÃºmero,No es un nÃºmero, esperado Vector,HashMap
 //21:57:20 File x\A3A\addons\core\functions\init\fn_initVarServer.sqf..., line 552
 //21:57:20  ? Context: 	[] L1 (x\A3A\addons\maps\Antistasi_Malden.Malden\initServer.sqf)
 	//[] L92 (x\A3A\addons\core\functions\init\fn_initServer.sqf)
@@ -124,17 +124,17 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 
 
 private _initialRebelEquipment = [
-    "CUP_sgun_CZ584", "CUP_sgun_slamfire", "CUP_srifle_CZ550_rail", ["CUP_srifle_CZ550", 5],
+    "CUP_sgun_CZ584", "CUP_sgun_slamfire", "CUP_srifle_CZ550_rail", ["CUP_srifle_CZ550", 5];
     "CUP_1Rnd_12Gauge_Pellets_No00_Buck", "CUP_1Rnd_12Gauge_Pellets_No3_Buck", "CUP_5x_22_LR_17_HMR_M", "CUP_6Rnd_45ACP_M", "CUP_1Rnd_762x51_CZ584",
-    "CUP_hgun_TaurusTracker455", "ACE_Flashlight_Maglite_ML300L",
+    "CUP_hgun_TaurusTracker455", "ACE_Flashlight_Maglite_ML300L";
     
-    ["IEDUrbanSmall_Remote_Mag", 30], ["IEDLandSmall_Remote_Mag", 30], ["IEDUrbanBig_Remote_Mag", 5], ["IEDLandBig_Remote_Mag", 5],
+    ["IEDUrbanSmall_Remote_Mag", 30], ["IEDLandSmall_Remote_Mag", 30], ["IEDUrbanBig_Remote_Mag", 5], ["IEDLandBig_Remote_Mag", 5];
     
     
 
     "CUP_V_I_Carrier_Belt", "CUP_V_I_Guerilla_Jacket", "CUP_V_I_RACS_Carrier_Rig_2", "CUP_V_I_RACS_Carrier_Rig_wdl_2",
     "CUP_V_RUS_Smersh_New_Light", "CUP_V_OI_TKI_Jacket1_06", "CUP_V_OI_TKI_Jacket1_05", "CUP_V_OI_TKI_Jacket1_03", "CUP_V_OI_TKI_Jacket3_01",
-    "B_FieldPack_cbr", "B_FieldPack_khk", "B_FieldPack_oli","B_AssaultPack_cbr","B_AssaultPack_rgr","B_AssaultPack_khk",
+    "B_FieldPack_cbr", "B_FieldPack_khk", "B_FieldPack_oli","B_AssaultPack_cbr","B_AssaultPack_rgr","B_AssaultPack_khk";
     "Binocular"
 ];
 
@@ -153,7 +153,7 @@ _initialRebelEquipment append ["Chemlight_blue","Chemlight_green","Chemlight_red
 
 ["initialRebelEquipment", _initialRebelEquipment] call _fnc_saveToTemplate;
 
-//Acá van a ir _FrebUniforms y _MrebUniforms
+//AcÃ¡ van a ir _FrebUniforms y _MrebUniforms
 
 private _rebUniforms = [
     "U_B_CombatUniform_mcam_W",
@@ -170,7 +170,7 @@ private _rebUniforms = [
     "U_IG_Guerilla3_1",
     "U_IG_leader",
     "U_IG_Guerrilla_6_1",
-    "U_I_G_resistanceLeader_F",
+    "U_I_G_resistanceLeader_F"
 ];          //Uniforms given to Normal Rebels
 
 private _rebUniformsAI = [
@@ -187,7 +187,7 @@ private _rebUniformsAI = [
     "U_IG_Guerilla2_3",
     "U_IG_Guerilla3_1",
     "U_IG_leader",
-    "U_IG_Guerrilla_6_1",];
+    "U_IG_Guerrilla_6_1"];
 
 ["uniforms", _rebUniforms + _rebUniformsAI] call _fnc_saveToTemplate;         //These Items get added to the Arsenal
 
@@ -198,7 +198,7 @@ private _rebUniformsAI = [
     "H_ShemagOpen_khk",
     "H_Bandanna_khk",
     "H_Cap_grn",
-    "H_Beret_blk",
+    "H_Beret_blk"
 
 ]] call _fnc_saveToTemplate;          //Headgear used by Rebell Ai until you have Armored Headgear.
 
