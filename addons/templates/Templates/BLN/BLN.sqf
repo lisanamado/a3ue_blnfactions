@@ -63,11 +63,12 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 //////////////////////////
 //       Vehicles       //
 //////////////////////////
+//Cambié el Golf por el Volga y el Praga por el Ural, ver si anda
 
-["vehiclesBasic", ["C_Quadbike_01_F", "CUP_C_Golf4_black_Civ"]] call _fnc_saveToTemplate;
+["vehiclesBasic", ["C_Quadbike_01_F", "CUP_C_Volha_CR_CIV"]] call _fnc_saveToTemplate;
 ["vehiclesLightUnarmed", ["CUP_O_Hilux_unarmed_TK_CIV"]] call _fnc_saveToTemplate;
 ["vehiclesLightArmed", ["CUP_I_Hilux_M2_IND_G_F"]] call _fnc_saveToTemplate;
-["vehiclesTruck", ["CUP_C_V3S_Open_TKC"]] call _fnc_saveToTemplate;
+["vehiclesTruck", ["CUP_C_Ural_Open_Civ_01"]] call _fnc_saveToTemplate;
 ["vehiclesAT", ["CUP_I_Hilux_SPG9_NAPA"]] call _fnc_saveToTemplate;
 ["vehiclesAA", ["CUP_I_Ural_ZU23_NAPA", "CUP_I_Hilux_zu23_NAPA"]] call _fnc_saveToTemplate;
 ["vehiclesBoat", ["I_G_Boat_Transport_01_F"]] call _fnc_saveToTemplate;
@@ -78,7 +79,7 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 
 ["vehiclesMedical", ["CUP_C_S1203_Ambulance_CIV"]] call _fnc_saveToTemplate;
 
-["vehiclesCivCar", ["C_Quadbike_01_F", "CUP_C_Golf4_black_Civ"]] call _fnc_saveToTemplate;
+["vehiclesCivCar", ["C_Quadbike_01_F", "CUP_C_Volha_CR_CIV"]] call _fnc_saveToTemplate;
 ["vehiclesCivTruck", ["CUP_C_Ural_Civ_03"]] call _fnc_saveToTemplate;
 ["vehiclesCivHeli", ["CUP_C_412"]] call _fnc_saveToTemplate;
 ["vehiclesCivBoat", ["C_Rubberboat"]] call _fnc_saveToTemplate;
@@ -124,17 +125,16 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 
 
 private _initialRebelEquipment = [
-    "CUP_sgun_CZ584", "CUP_sgun_slamfire", "CUP_srifle_CZ550_rail", ["CUP_srifle_CZ550", 5];
-    "CUP_1Rnd_12Gauge_Pellets_No00_Buck", "CUP_1Rnd_12Gauge_Pellets_No3_Buck", "CUP_5x_22_LR_17_HMR_M", "CUP_6Rnd_45ACP_M", "CUP_1Rnd_762x51_CZ584",
-    "CUP_hgun_TaurusTracker455", "ACE_Flashlight_Maglite_ML300L";
-    
-    ["IEDUrbanSmall_Remote_Mag", 30], ["IEDLandSmall_Remote_Mag", 30], ["IEDUrbanBig_Remote_Mag", 5], ["IEDLandBig_Remote_Mag", 5];
-    
-    
+    "CUP_sgun_CZ584", "CUP_sgun_slamfire", "CUP_srifle_CZ550_rail", ["CUP_srifle_CZ550", 5],
 
+    "CUP_1Rnd_12Gauge_Pellets_No00_Buck", "CUP_1Rnd_12Gauge_Pellets_No3_Buck", "CUP_5x_22_LR_17_HMR_M", "CUP_6Rnd_45ACP_M", "CUP_1Rnd_762x51_CZ584",
+    "CUP_hgun_TaurusTracker455", "ACE_Flashlight_Maglite_ML300L",
+    
+    ["IEDUrbanSmall_Remote_Mag", 30], ["IEDLandSmall_Remote_Mag", 30], ["IEDUrbanBig_Remote_Mag", 5], ["IEDLandBig_Remote_Mag", 5],
+    
     "CUP_V_I_Carrier_Belt", "CUP_V_I_Guerilla_Jacket", "CUP_V_I_RACS_Carrier_Rig_2", "CUP_V_I_RACS_Carrier_Rig_wdl_2",
-    "CUP_V_RUS_Smersh_New_Light", "CUP_V_OI_TKI_Jacket1_06", "CUP_V_OI_TKI_Jacket1_05", "CUP_V_OI_TKI_Jacket1_03", "CUP_V_OI_TKI_Jacket3_01",
-    "B_FieldPack_cbr", "B_FieldPack_khk", "B_FieldPack_oli","B_AssaultPack_cbr","B_AssaultPack_rgr","B_AssaultPack_khk";
+    "CUP_V_RUS_Smersh_New_Light_Spectre", "CUP_V_OI_TKI_Jacket3_06", "CUP_V_OI_TKI_Jacket5_02", "CUP_V_OI_TKI_Jacket1_03", "CUP_V_OI_TKI_Jacket3_01",
+    "B_FieldPack_cbr", "B_FieldPack_khk", "B_FieldPack_oli","CUP_B_AlicePack_OD","B_AssaultPack_rgr","B_AssaultPack_khk",
     "Binocular"
 ];
 
@@ -153,16 +153,17 @@ _initialRebelEquipment append ["Chemlight_blue","Chemlight_green","Chemlight_red
 
 ["initialRebelEquipment", _initialRebelEquipment] call _fnc_saveToTemplate;
 
-//Acá van a ir _FrebUniforms y _MrebUniforms
+//I'm tryingto do a female and male class _frebUniforms y _mrebUniforms
 
-private _rebUniforms = [
+private _frebUniforms =  [
     "U_B_CombatUniform_mcam_W",
     "U_B_CombatUniform_mcam_tshirt_W",
     "WU_B_T_Soldier_AR_F",
     "WU_B_T_Soldier_F",
-    "WU_B_HeliPilotCoveralls",
-    "CUP_U_B_CZ_WDL_Kneepads",
-    "CUP_U_B_CZ_Pilot_WDL",
+]
+
+private _mrebUniforms = [
+
     "U_IG_Guerilla1_1",
     "U_IG_Guerilla2_1",
     "U_IG_Guerilla2_2",
@@ -171,25 +172,15 @@ private _rebUniforms = [
     "U_IG_leader",
     "U_IG_Guerrilla_6_1",
     "U_I_G_resistanceLeader_F"
-];          //Uniforms given to Normal Rebels
+];          
 
-private _rebUniformsAI = [
-    "U_B_CombatUniform_mcam_W",
-    "U_B_CombatUniform_mcam_tshirt_W",
-    "WU_B_T_Soldier_AR_F",
-    "WU_B_T_Soldier_F",
-    "WU_B_HeliPilotCoveralls",
-    "CUP_U_B_CZ_WDL_Kneepads",
-    "CUP_U_B_CZ_Pilot_WDL",
-    "U_IG_Guerilla1_1",
-    "U_IG_Guerilla2_1",
-    "U_IG_Guerilla2_2",
-    "U_IG_Guerilla2_3",
-    "U_IG_Guerilla3_1",
-    "U_IG_leader",
-    "U_IG_Guerrilla_6_1"];
+//I deleted _rebUniformsAI class specs (Uniforms given to Normal Rebels)
+//I'm setting it up again as equal to sum of both prior ones
+//will it work?
 
-["uniforms", _rebUniforms + _rebUniformsAI] call _fnc_saveToTemplate;         //These Items get added to the Arsenal
+private _rebUniformsAI = [ _mrebUniforms + _frebUniforms]
+
+["uniforms", _mrebUniforms + _frebUniforms] call _fnc_saveToTemplate;         //These Items get added to the Arsenal
 
 ["headgear", [
     "CUP_H_Booniehat_CCE",
@@ -200,14 +191,17 @@ private _rebUniformsAI = [
     "H_Cap_grn",
     "H_Beret_blk"
 
-]] call _fnc_saveToTemplate;          //Headgear used by Rebell Ai until you have Armored Headgear.
+]] call _fnc_saveToTemplate;          //Headgear used by Rebel Ai until you have Armored Headgear.
 
 /////////////////////
 ///  Identities   ///
 /////////////////////
 
+//I added female voices and spanish voice. Spanish voice is not working. Have to learn how to make female voices match with female faces.
+//I also have to learn how to match female faces with female bodies. Creating female and male soldier classes with their inner specs might do it.
+
 ["faces", ["Max_faceWS1","Max_faceWS10","Max_faceWS2","Max_faceWS3","Max_faceWS4","Max_faceWS6","Max_faceWS9","PersianHead_A3_01","WhiteHead_02","GreekHead_A3_03","AfricanHead_03","AsianHead_A3_03","WhiteHead_20","PersianHead_A3_02"]] call _fnc_saveToTemplate;
-["voices", ["MALE01ESPA", "CUP_D_Male01_GB_PMC"]] call _fnc_saveToTemplate;
+["voices", ["MALE01ESPA", "CUP_D_Female01_D_EN", "Male05GRE", "Male06GRE"]] call _fnc_saveToTemplate;
 
 //////////////////////////
 //       Loadouts       //
@@ -269,4 +263,3 @@ private _unitTypes = [
 ];
 
 [_prefix, _unitTypes, _loadoutData] call _fnc_generateAndSaveUnitsToTemplate;
-
