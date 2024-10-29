@@ -90,7 +90,7 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 
 
 private _initialRebelEquipment = [
-    "CUP_sgun_CZ584", "CUP_sgun_slamfire", "CUP_srifle_CZ550_rail", ["CUP_srifle_CZ550", 5],
+    "CUP_sgun_CZ584", "CUP_sgun_slamfire",  ["CUP_srifle_CZ550", 5],
 
     "CUP_1Rnd_12Gauge_Pellets_No00_Buck", "CUP_1Rnd_12Gauge_Pellets_No3_Buck", "CUP_5x_22_LR_17_HMR_M", "CUP_6Rnd_45ACP_M", "CUP_1Rnd_762x51_CZ584",
     "CUP_hgun_TaurusTracker455",
@@ -160,7 +160,7 @@ private _rebUniforms =  [
 ///  Identities   ///
 /////////////////////
 
-//I added female voices, spanish voice. and male greek English
+//I added english female voice, spanish voice, and male greek English voices 
 //Spanish voice is not working.
 
 ["faces", ["Max_faceWS1","Max_faceWS10","Max_faceWS2","Max_faceWS3","Max_faceWS4","Max_faceWS6","Max_faceWS9","PersianHead_A3_01","WhiteHead_02","GreekHead_A3_03","AfricanHead_03","AsianHead_A3_03","WhiteHead_20","PersianHead_A3_02"]] call _fnc_saveToTemplate;
