@@ -1,42 +1,7 @@
 //This is a basic CUP Rebel faction I'm trying to make for our next campaign in AU
 //It's meant to be a latin-american civilian-in-arms faction, including female soldiers and spanish radio voiceovers, and a very limited initial weapons stash.
 //I made it on the base of LRI rebel faction. most of the scripting is a copy of it as it is found in AU's core pbo.
-//I can find it in the faction selector, but the game will keep trying to start for ever, getting in RPT file these errors:
 
-
-//21:56:59 Error in expression <clesCivPlane");
-//["undercoverVehicles",  _undercoverVehicles] call _declareServer>
-//21:56:59   Error position: <_undercoverVehicles] call _declareServer>
-//21:56:59   Error Variable no definida en la expresión: _undercovervehicles
-//21:56:59 File x\A3A\addons\core\functions\init\fn_initVarServer.sqf..., line 470
-//21:56:59  ? Context: 	[] L1 (x\A3A\addons\maps\Antistasi_Malden.Malden\initServer.sqf)
-	//[] L92 (x\A3A\addons\core\functions\init\fn_initServer.sqf)
-	//[] L478 (x\A3A\addons\core\functions\init\fn_initVarServer.sqf)
-	//[] L478 (x\A3A\addons\core\functions\init\fn_initVarServer.sqf)
-	//[] L478 (x\A3A\addons\core\functions\init\fn_initVarServer.sqf)
-
-//    21:57:20 Error in expression <ction_reb get "initialRebelEquipment");
-//_initialEquipment append lootBasicItem;
-//>
-//21:57:20   Error position: <_initialEquipment append lootBasicItem;
-//>
-//21:57:20   Error Variable no definida en la expresión: _initialequipment
-//21:57:20 File x\A3A\addons\core\functions\Ammunition\fn_loot.sqf..., line 82
-//21:57:20  ? Context: 	[] L1 (x\A3A\addons\maps\Antistasi_Malden.Malden\initServer.sqf)
-	//[] L92 (x\A3A\addons\core\functions\init\fn_initServer.sqf)
-	//[] L489 (x\A3A\addons\core\functions\init\fn_initVarServer.sqf)
-	//[] L90 (x\A3A\addons\core\functions\Ammunition\fn_loot.sqf)
-	//[] L41 (x\A3A\addons\ultimate\functions\Ammunition\fn_removeForbiddenItems.sqf)
-
-//21:57:20 ["CUP_B_CH53E_GER","CUP_B_UH1D_GER_KSK","CUP_B_AW159_Unarmed_GER","CUP_MH60S_Unarmed_USN","CUP_MH60S_Unarmed_FFV_USN","CUP_B_MH60S_USMC","CUP_B_UH60S_USN","CUP_B_CH53E_USMC","CUP_B_MH60L_DAP_2x_USN","CUP_B_UH1D_GER_KSK_Des","CUP_B_MH6M_USA","CUP_B_MH6J_USA","CUP_B_UH1Y_UNA_USMC","CUP_B_AH1Z_Dynamic_USMC","CUP_B_UH1D_armed_GER_KSK_Des","CUP_B_UH1D_gunship_GER_KSK_Des","CUP_B_AW159_GER","CUP_B_MH60L_DAP_4x_USN","CUP_B_UH1Y_Gunship_Dynamic_USMC"]
-//21:57:20 Error in expression <;
-//{ _groundVehicleThreat set [_x, 80] } forEach (A3A_faction_Reb get  "vehiclesA>
-//21:57:20   Error position: <forEach (A3A_faction_Reb get  "vehiclesA>
-//21:57:20   Error foreach: Tipo Número,No es un número, esperado Vector,HashMap
-//21:57:20 File x\A3A\addons\core\functions\init\fn_initVarServer.sqf..., line 552
-//21:57:20  ? Context: 	[] L1 (x\A3A\addons\maps\Antistasi_Malden.Malden\initServer.sqf)
-	//[] L92 (x\A3A\addons\core\functions\init\fn_initServer.sqf)
-	//[] L552 (x\A3A\addons\core\functions\init\fn_initVarServer.sqf)
 
 
 
@@ -153,17 +118,15 @@ _initialRebelEquipment append ["Chemlight_blue","Chemlight_green","Chemlight_red
 
 ["initialRebelEquipment", _initialRebelEquipment] call _fnc_saveToTemplate;
 
-//I'm tryingto do a female and male class _frebUniforms y _mrebUniforms
 
-private _frebUniforms =  [
-    "U_B_CombatUniform_mcam_W",
+private _rebUniforms =  [
+// female uniforms
+"U_B_CombatUniform_mcam_W",
     "U_B_CombatUniform_mcam_tshirt_W",
     "WU_B_T_Soldier_AR_F",
     "WU_B_T_Soldier_F",
-]
 
-private _mrebUniforms = [
-
+// male uniforms
     "U_IG_Guerilla1_1",
     "U_IG_Guerilla2_1",
     "U_IG_Guerilla2_2",
@@ -174,13 +137,13 @@ private _mrebUniforms = [
     "U_I_G_resistanceLeader_F"
 ];          
 
-//I deleted _rebUniformsAI class specs (Uniforms given to Normal Rebels)
-//I'm setting it up again as equal to sum of both prior ones
-//will it work?
+//I'm  trying to find a way to make
+//female heads spawn only on female 
+//Uniforms, same with voice.
+// Don't think it's possible,
+//as uniforms and Identities are set as a single value each one
 
-private _rebUniformsAI = [ _mrebUniforms + _frebUniforms]
-
-["uniforms", _mrebUniforms + _frebUniforms] call _fnc_saveToTemplate;         //These Items get added to the Arsenal
+["uniforms", _rebUniforms] call _fnc_saveToTemplate;         //These Items get added to the Arsenal
 
 ["headgear", [
     "CUP_H_Booniehat_CCE",
@@ -197,8 +160,8 @@ private _rebUniformsAI = [ _mrebUniforms + _frebUniforms]
 ///  Identities   ///
 /////////////////////
 
-//I added female voices and spanish voice. Spanish voice is not working. Have to learn how to make female voices match with female faces.
-//I also have to learn how to match female faces with female bodies. Creating female and male soldier classes with their inner specs might do it.
+//I added female voices, spanish voice. and male greek English
+//Spanish voice is not working.
 
 ["faces", ["Max_faceWS1","Max_faceWS10","Max_faceWS2","Max_faceWS3","Max_faceWS4","Max_faceWS6","Max_faceWS9","PersianHead_A3_01","WhiteHead_02","GreekHead_A3_03","AfricanHead_03","AsianHead_A3_03","WhiteHead_20","PersianHead_A3_02"]] call _fnc_saveToTemplate;
 ["voices", ["MALE01ESPA", "CUP_D_Female01_D_EN", "Male05GRE", "Male06GRE"]] call _fnc_saveToTemplate;
