@@ -32,8 +32,7 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 ["vehiclesLightUnarmed", ["CUP_O_Hilux_unarmed_TK_CIV"]] call _fnc_saveToTemplate;
 ["vehiclesLightArmed", ["CUP_I_Hilux_M2_IND_G_F"]] call _fnc_saveToTemplate;
 
-//Cambiar el camión por otro más choto y no civil para que se justifique que valga la mitad. el praga no estaba mal al final
-["vehiclesTruck", ["CUP_C_Ural_Open_Civ_01"]] call _fnc_saveToTemplate;
+["vehiclesTruck", ["CUP_O_V3S_Covered_TKA"]] call _fnc_saveToTemplate;
 ["vehiclesAT", ["CUP_I_Hilux_SPG9_NAPA"]] call _fnc_saveToTemplate;
 ["vehiclesAA", ["CUP_I_Ural_ZU23_NAPA", "CUP_I_Hilux_zu23_NAPA"]] call _fnc_saveToTemplate;
 ["vehiclesBoat", ["I_G_Boat_Transport_01_F"]] call _fnc_saveToTemplate;
@@ -41,8 +40,7 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 ["vehiclesPlane", ["CUP_C_DC3_CIV"]] call _fnc_saveToTemplate;                    
 ["vehiclesCivPlane", ["CUP_C_AN2_CIV", "CUP_C_C47_CIV"]] call _fnc_saveToTemplate;
 
-//cambiar la ambulancia por algo un poco mejor
-["vehiclesMedical", ["CUP_C_S1203_Ambulance_CIV"]] call _fnc_saveToTemplate;
+["vehiclesMedical", ["CUP_B_LR_Ambulance_GB_W"]] call _fnc_saveToTemplate;
 
 ["vehiclesCivCar", ["C_Quadbike_01_F", "CUP_C_Volha_CR_CIV"]] call _fnc_saveToTemplate;
 ["vehiclesCivTruck", ["CUP_C_Ural_Civ_03"]] call _fnc_saveToTemplate;
@@ -100,10 +98,9 @@ private _initialRebelEquipment = [
     ["IEDUrbanSmall_Remote_Mag", 30], ["IEDLandSmall_Remote_Mag", 30], ["IEDUrbanBig_Remote_Mag", 5], ["IEDLandBig_Remote_Mag", 5],
 
     //I preferred jackets over vests to dissemble the bodies unmatching faces. They should look light, as for tropical climate
-    //sumar jackets para paliar la falta de vests
-    "CUP_V_OI_TKI_Jacket3_06", "CUP_V_OI_TKI_Jacket5_02", "CUP_V_OI_TKI_Jacket1_03", "CUP_V_OI_TKI_Jacket3_01",
+    "CUP_V_OI_TKI_Jacket2_02", "CUP_V_OI_TKI_Jacket2_03", "CUP_V_OI_TKI_Jacket2_01", "CUP_V_OI_TKI_Jacket3_04", "CUP_V_OI_TKI_Jacket3_02", "CUP_V_OI_TKI_Jacket3_03", "CUP_V_OI_TKI_Jacket3_05","CUP_V_OI_TKI_Jacket3_06", "CUP_V_OI_TKI_Jacket3_01",
 
-    "B_FieldPack_cbr", "B_FieldPack_khk", "B_FieldPack_oli","CUP_B_AlicePack_OD","B_AssaultPack_rgr","B_AssaultPack_khk",
+    "B_FieldPack_oucamo", "CUP_B_AlicePack_Khaki", "CUP_B_AlicePack_OD", "CUP_B_CivPack_WDL", "CUB_B_SLA_Medicbag",
 
     "Binocular"
 ];
@@ -121,19 +118,20 @@ if (A3A_hasTFARBeta && startWithLongRangeRadio) then {
 
 _initialRebelEquipment append ["Chemlight_blue","Chemlight_green","Chemlight_red","Chemlight_yellow"];
 
+
+
 //uniforms are separated in female and male bodies, but by now there seems not to be a way to make them match the faces
 
 ["initialRebelEquipment", _initialRebelEquipment] call _fnc_saveToTemplate;
 
-private _frebUniforms =  [
+private _rebUniforms =  [
 // female uniforms:
     "U_B_CombatUniform_mcam_W",
     "U_B_CombatUniform_mcam_tshirt_W",
     "WU_B_T_Soldier_AR_F",
-    "WU_B_T_Soldier_F",
-];
+    "WU_B_T_Soldier_F"
+
 // male uniforms:
-private _mrebUniforms = [
     "U_IG_Guerilla1_1",
     "U_IG_Guerilla2_1",
     "U_IG_Guerrilla_6_1",
@@ -146,17 +144,21 @@ private _mrebUniforms = [
 //I Don't think it's possible,
 //as uniforms and Identities are set as a single value each one
 
-private _rebUniformsAI = [ _mrebUniforms + _frebUniforms]
-["uniforms", _mrebUniforms + _frebUniforms] call _fnc_saveToTemplate;         //These Items get added to the Arsenal
+private _rebUniformsAI = [ _rebUniforms]
+["uniforms", _rebUniforms] call _fnc_saveToTemplate;         //These Items get added to the Arsenal
 
 ["headgear", [
     "CUP_H_Booniehat_CCE",
+    "CUP_H_Booniehat_Rodhesian",
     "CUP_H_SLA_Boonie",
-    "H_Shemag_olive",
+    "CUP_H_C_Beret_01",
+    "CUP_H_C_Beret_02",
+    "H_ShemagOpen_tan",
     "H_ShemagOpen_khk",
     "H_Bandanna_khk",
     "H_Cap_grn",
     "H_Beret_blk"
+    
 
 ]] call _fnc_saveToTemplate;          //Headgear used by Rebel Ai until you have Armored Headgear.
 
@@ -182,7 +184,9 @@ _loadoutData set ["compasses", ["ItemCompass"]];
 _loadoutData set ["binoculars", ["Binocular"]];
 
 _loadoutData set ["uniforms", _rebUniformsAI];
-_loadoutData set ["facewear", ["None", "GSpectacles", "CUP_TK_NeckScarf"]];
+
+//set a red neckscarf as identifier
+_loadoutData set ["facewear", [ "CUP_FR_NeckScarf5", "CUP_G_Scarf_Face_Red"]];
 
 _loadoutData set ["items_medical_basic", ["BASIC"] call A3A_fnc_itemset_medicalSupplies];
 _loadoutData set ["items_medical_standard", ["STANDARD"] call A3A_fnc_itemset_medicalSupplies];
