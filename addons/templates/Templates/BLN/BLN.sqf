@@ -1,7 +1,8 @@
 //This is a basic CUP Rebel faction I'm trying to make for our next campaign in AU
 //It's meant to be a latin-american civilian-in-arms faction, 
 //including female soldiers, spanish radio voiceovers, and a really basic initial arsenal.
-//I made it on the base of LRI rebel faction. most of the scripting is a copy of it as it is found in AU's core pbo.
+//It seems not to be possible to assign bodies and faces in two sepparate classes, so female and male bodies and heads are going to mix
+//I've chosen bodies and jackets trying to make this not to obvious. Think of them as strong women and slim man. Or just transgender people, use your imagination :D.
 
 
 #include "..\..\script_component.hpp"
@@ -26,23 +27,22 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 //////////////////////////
 //       Vehicles       //
 //////////////////////////
-//Changed Golf by older Volga
 
-["vehiclesBasic", ["C_Quadbike_01_F", "CUP_C_Volha_CR_CIV"]] call _fnc_saveToTemplate;
-["vehiclesLightUnarmed", ["CUP_O_Hilux_unarmed_TK_CIV"]] call _fnc_saveToTemplate;
+
+["vehiclesBasic", ["C_Quadbike_01_F"]] call _fnc_saveToTemplate;
+["vehiclesLightUnarmed", ["CUP_B_M151_HIL"]] call _fnc_saveToTemplate;
 ["vehiclesLightArmed", ["CUP_I_Hilux_M2_IND_G_F"]] call _fnc_saveToTemplate;
-
-["vehiclesTruck", ["CUP_O_V3S_Covered_TKA"]] call _fnc_saveToTemplate;
+["vehiclesTruck", ["CUP_O_V3S_Open_TKA"]] call _fnc_saveToTemplate;
 ["vehiclesAT", ["CUP_I_Hilux_SPG9_NAPA"]] call _fnc_saveToTemplate;
 ["vehiclesAA", ["CUP_I_Ural_ZU23_NAPA", "CUP_I_Hilux_zu23_NAPA"]] call _fnc_saveToTemplate;
 ["vehiclesBoat", ["I_G_Boat_Transport_01_F"]] call _fnc_saveToTemplate;
 
 ["vehiclesPlane", ["CUP_C_DC3_CIV"]] call _fnc_saveToTemplate;                    
-["vehiclesCivPlane", ["CUP_C_AN2_CIV", "CUP_C_C47_CIV"]] call _fnc_saveToTemplate;
+["vehiclesCivPlane", ["CUP_C_AN2_CIV", "CUP_C_C47_CIV", "CUP_C_Cessna_172_CIV"]] call _fnc_saveToTemplate;
 
-["vehiclesMedical", ["CUP_B_LR_Ambulance_GB_W"]] call _fnc_saveToTemplate;
+["vehiclesMedical", ["CUP_B_LR_Ambulance_CZ_W"]] call _fnc_saveToTemplate;
 
-["vehiclesCivCar", ["C_Quadbike_01_F", "CUP_C_Volha_CR_CIV"]] call _fnc_saveToTemplate;
+["vehiclesCivCar", ["CUP_C_Skoda_CR_CIV"]] call _fnc_saveToTemplate;
 ["vehiclesCivTruck", ["CUP_C_Ural_Civ_03"]] call _fnc_saveToTemplate;
 ["vehiclesCivHeli", ["CUP_C_412"]] call _fnc_saveToTemplate;
 ["vehiclesCivBoat", ["C_Rubberboat"]] call _fnc_saveToTemplate;
@@ -66,9 +66,9 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 //       Antistasi Plus Stuff       //
 //////////////////////////////////////
 
-
-["lootCrate", ""] call _fnc_saveToTemplate;
-["rallyPoint", ""] call _fnc_saveToTemplate;
+//CHANGE THIS SO THE BOX CAN BE LOADED WITHOUT ACE AND RALLY POINT DOESN'T LOOK WEIRD, JUST USE THE SAME AS OTHER TEMPLATES
+["lootCrate", "A3AP_Box_Syndicate_Ammo_F"] call _fnc_saveToTemplate;
+["rallyPoint", "B_RadioBag_01_wdl_F"] call _fnc_saveToTemplate;
 
 //animation sources - camo nets, slat cages, decals etc, digit is probability of appearance
 //I made this values higher
@@ -90,7 +90,7 @@ private _hasContact = "enoch" in A3A_enabledDLC;
 
 private _initialRebelEquipment = [
 
-    "CUP_sgun_CZ584", "CUP_sgun_slamfire", ["CUP_srifle_CZ550", 5],
+    "CUP_sgun_CZ584", ["CUP_srifle_CZ550", 5],
 
     "CUP_1Rnd_12Gauge_Pellets_No00_Buck", "CUP_1Rnd_12Gauge_Pellets_No3_Buck", "CUP_5x_22_LR_17_HMR_M", "CUP_6Rnd_45ACP_M", "CUP_1Rnd_762x51_CZ584",
     "CUP_hgun_TaurusTracker455",
@@ -118,34 +118,33 @@ if (A3A_hasTFARBeta && startWithLongRangeRadio) then {
 
 _initialRebelEquipment append ["Chemlight_blue","Chemlight_green","Chemlight_red","Chemlight_yellow"];
 
-
-
-//uniforms are separated in female and male bodies, but by now there seems not to be a way to make them match the faces
-
 ["initialRebelEquipment", _initialRebelEquipment] call _fnc_saveToTemplate;
+
+
+//UNIFORMS
 
 private _rebUniforms =  [
 // female uniforms:
     "U_B_CombatUniform_mcam_W",
+    "WU_I_CombatUniform_AR",    
     "U_B_CombatUniform_mcam_tshirt_W",
     "WU_B_T_Soldier_AR_F",
-    "WU_B_T_Soldier_F"
-
+    "WU_B_T_Soldier_F",
+    "WU_B_HeliPilotCoveralls",
 // male uniforms:
-    "U_IG_Guerilla1_1",
-    "U_IG_Guerilla2_1",
-    "U_IG_Guerrilla_6_1",
-    "U_I_G_resistanceLeader_F"
+    "U_C_WorkerCoveralls",
+    "U_BG_Guerrilla_6_1",
+    "CUP_I_B_PARA_unit_3",
+    "CUP_I_B_PARA_unit_6",
+    "CUP_I_B_PARA_unit_14",
+    "CUP_I_B_PARA_unit_5"
 ];          
 
-//I'm  trying to find a way to make
-//female heads spawn only on female 
-//Uniforms, same with voice.
-//I Don't think it's possible,
-//as uniforms and Identities are set as a single value each one
-
-private _rebUniformsAI = [ _rebUniforms]
 ["uniforms", _rebUniforms] call _fnc_saveToTemplate;         //These Items get added to the Arsenal
+
+
+
+//HEADGEAR
 
 ["headgear", [
     "CUP_H_Booniehat_CCE",
@@ -158,21 +157,35 @@ private _rebUniformsAI = [ _rebUniforms]
     "H_Bandanna_khk",
     "H_Cap_grn",
     "H_Beret_blk"
-    
 
-]] call _fnc_saveToTemplate;          //Headgear used by Rebel Ai until you have Armored Headgear.
+]] call _fnc_saveToTemplate;
 
 /////////////////////
 ///  Identities   ///
 /////////////////////
 
-//I added english female voice, spanish voice, and male greek English voices 
-//Spanish voice is not working by now
+//I added english female voice, spanish voice, and male greek English voices.
+//They seem to work or not as they please, got to investigate on it
 
-//Tengo que buscar voces que suenen andróginas
+["faces", [
+    
+    "Max_faceWS1",
+    "Max_faceWS10",
+    "Max_faceWS2",
+    "Max_faceWS3",
+    "Max_faceWS4",
+    "Max_faceWS6",
+    "Max_faceWS9",
+    "PersianHead_A3_01",
+    "PersianHead_A3_02",
+    "AfricanHead_01",
+    "AfricanHead_03",
+    "AsianHead_A3_03",
+    "WhiteHead_20",
+    "WhiteHead_02"
 
-["faces", ["Max_faceWS1","Max_faceWS10","Max_faceWS2","Max_faceWS3","Max_faceWS4","Max_faceWS6","Max_faceWS9","PersianHead_A3_01","WhiteHead_02","GreekHead_A3_03","AfricanHead_03","AsianHead_A3_03","WhiteHead_20","PersianHead_A3_02"]] call _fnc_saveToTemplate;
-["voices", ["MALE01ESPA", "CUP_D_Female01_D_EN", "Male05GRE", "Male06GRE"]] call _fnc_saveToTemplate;
+]] call _fnc_saveToTemplate;
+["voices", ["CUP_D_Female01_D_EN", "Male04GRE", "MALEO1ESPA"]] call _fnc_saveToTemplate;
 
 //////////////////////////
 //       Loadouts       //
@@ -183,7 +196,7 @@ _loadoutData set ["watches", ["ItemWatch"]];
 _loadoutData set ["compasses", ["ItemCompass"]];
 _loadoutData set ["binoculars", ["Binocular"]];
 
-_loadoutData set ["uniforms", _rebUniformsAI];
+_loadoutData set ["uniforms", _rebUniforms];
 
 //set a red neckscarf as identifier
 _loadoutData set ["facewear", [ "CUP_FR_NeckScarf5", "CUP_G_Scarf_Face_Red"]];
